@@ -12,13 +12,12 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: #00ff00;
+            font-family: 'Arial', sans-serif;
+            background: #0a1929;
+            color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Animación de fondo con líneas de código */
         body::before {
             content: '';
             position: fixed;
@@ -27,7 +26,7 @@
             width: 100%;
             height: 100%;
             background-image: 
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.03) 2px, rgba(0, 255, 0, 0.03) 4px);
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px);
             pointer-events: none;
             z-index: 1;
         }
@@ -40,144 +39,140 @@
             padding: 20px;
         }
 
-        /* PORTADA */
-        #portada {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
         .logo-container {
+            text-align: center;
             margin-bottom: 30px;
-            position: relative;
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { filter: drop-shadow(0 0 20px #00ff00); }
-            50% { filter: drop-shadow(0 0 40px #00ff00); }
-        }
-
-        .logo-container img {
-            max-width: 300px;
-            height: auto;
-            border: 3px solid #00ff00;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
         }
 
         .logo-placeholder {
-            width: 300px;
-            height: 300px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #00ff00;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid #4a90e2;
             border-radius: 10px;
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             font-size: 48px;
             font-weight: bold;
-            text-shadow: 0 0 20px #00ff00;
+            margin: 0 auto;
         }
 
         .logo-placeholder .subtitle {
-            font-size: 16px;
+            font-size: 14px;
             margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .titulo-portada {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px #00ff00;
-            letter-spacing: 4px;
-        }
-
-        .subtitulo-portada {
-            font-size: 24px;
-            margin-bottom: 40px;
-            opacity: 0.8;
-            color: #00dd00;
-        }
-
-        .acceso-btn {
-            padding: 15px 40px;
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            font-size: 18px;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .acceso-btn:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 30px #00ff00;
+            opacity: 0.9;
         }
 
         .clasificado {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 0, 0, 0.8);
+            background: rgba(231, 76, 60, 0.9);
             color: #fff;
             padding: 10px 20px;
             transform: rotate(15deg);
             font-weight: bold;
-            border: 2px solid #ff0000;
+            border: 2px solid #c0392b;
+            z-index: 100;
         }
 
         /* NAVEGACIÓN */
         nav {
+            background: rgba(13, 27, 42, 0.95);
+            border-bottom: 3px solid #4a90e2;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
-            background: rgba(0, 0, 0, 0.95);
-            border-bottom: 2px solid #00ff00;
-            padding: 15px 0;
-            z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
+            z-index: 999;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        nav a {
-            color: #00ff00;
+        nav li {
+            position: relative;
+        }
+
+        nav a, nav .nav-btn {
+            color: #ffffff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px 20px;
-            border: 1px solid transparent;
+            border: 2px solid transparent;
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-radius: 5px;
+            display: block;
+            cursor: pointer;
+            background: transparent;
         }
 
-        nav a:hover, nav a.active {
-            border: 1px solid #00ff00;
-            background: rgba(0, 255, 0, 0.1);
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        nav a:hover, nav a.active, nav .nav-btn:hover {
+            border: 2px solid #4a90e2;
+            background: rgba(74, 144, 226, 0.2);
+        }
+
+        /* SUBMENÚ DESPLEGABLE */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(13, 27, 42, 0.98);
+            border: 2px solid #4a90e2;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            min-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .submenu.active {
+            display: block;
+        }
+
+        .submenu a {
+            padding: 12px 20px;
+            font-size: 14px;
+            border: none;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.3);
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .submenu a:last-child {
+            border-bottom: none;
+        }
+
+        .submenu a:hover {
+            background: rgba(74, 144, 226, 0.3);
+            border-left: 3px solid #4a90e2;
+        }
+
+        .nav-item-with-submenu {
+            position: relative;
+        }
+
+        .nav-item-with-submenu > .nav-btn::after {
+            content: ' ▼';
+            font-size: 12px;
+            margin-left: 5px;
         }
 
         /* SECCIONES */
         .seccion {
             display: none;
-            min-height: 100vh;
-            padding: 60px 20px;
+            padding: 40px 20px;
+            min-height: 70vh;
         }
 
         .seccion.active {
@@ -194,39 +189,39 @@
             text-align: center;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #00ff00;
+            border-bottom: 2px solid #4a90e2;
         }
 
         .seccion-header h2 {
-            font-size: 36px;
+            font-size: 32px;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px #00ff00;
+            color: #4a90e2;
         }
 
         .seccion-header .codigo {
-            color: #00dd00;
-            opacity: 0.8;
+            color: #94b8d6;
+            opacity: 0.9;
+            font-size: 14px;
         }
 
         .contenido {
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid #00ff00;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #4a90e2;
             border-radius: 10px;
             padding: 30px;
             line-height: 1.8;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .contenido h3 {
-            color: #00ff00;
+            color: #4a90e2;
             margin: 30px 0 15px 0;
             font-size: 24px;
-            text-shadow: 0 0 10px #00ff00;
         }
 
         .contenido p {
             margin-bottom: 20px;
-            color: #00ee00;
+            color: #ffffff;
         }
 
         .contenido ul {
@@ -236,81 +231,336 @@
 
         .contenido li {
             margin-bottom: 10px;
-            color: #00dd00;
+            color: #ffffff;
         }
 
         .contenido strong {
-            color: #00ff00;
-            text-shadow: 0 0 5px #00ff00;
+            color: #4a90e2;
+            font-weight: bold;
         }
 
-        /* EDITOR EN VIVO */
-        .editable {
-            position: relative;
-            cursor: text;
+        /* PÁGINA PRINCIPAL */
+        #principal {
+            padding: 40px 20px;
         }
 
-        .editable:hover {
-            background: rgba(0, 255, 0, 0.05);
+        #principal h1 {
+            font-size: 42px;
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        .edit-indicator {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 255, 0, 0.2);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
+        #principal .intro {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #4a90e2;
+            border-radius: 10px;
+            padding: 40px;
+            line-height: 1.8;
         }
 
-        .editable:hover .edit-indicator {
-            opacity: 1;
+        /* GESTIÓN DE ARCHIVOS */
+        .archivos-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(74, 144, 226, 0.1);
+            border-radius: 8px;
+            border: 1px solid #4a90e2;
         }
 
-        /* Botón para volver arriba */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(0, 255, 0, 0.2);
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            justify-content: center;
+        .archivos-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .archivos-header h3 {
+            margin: 0;
+            color: #4a90e2;
+        }
+
+        .btn-subir {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            z-index: 1000;
+            font-size: 14px;
             transition: all 0.3s;
         }
 
-        .scroll-top:hover {
-            background: #00ff00;
-            color: #000;
+        .btn-subir:hover {
+            background: #357abd;
         }
 
-        .scroll-top.visible {
+        .lista-archivos {
+            list-style: none;
+            padding: 0;
+        }
+
+        .archivo-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .archivo-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .archivo-nombre {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 5px;
+        }
+
+        .archivo-descripcion {
+            font-size: 14px;
+            color: #94b8d6;
+        }
+
+        .archivo-acciones {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-descargar, .btn-eliminar {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-descargar {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-descargar:hover {
+            background: #229954;
+        }
+
+        .btn-eliminar {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-eliminar:hover {
+            background: #c0392b;
+        }
+
+        .sin-archivos {
+            text-align: center;
+            padding: 30px;
+            color: #94b8d6;
+            font-style: italic;
+        }
+
+        /* BOTÓN DE EDICIÓN */
+        .btn-editar {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .btn-editar:hover {
+            background: #357abd;
+            transform: scale(1.05);
+        }
+
+        .btn-editar:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #0d1b2a;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid #4a90e2;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .modal-content input[type="file"] {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .modal-content textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .modal-content button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content button:hover {
+            background: #357abd;
+        }
+
+        .modal-content button.secondary {
+            background: #666;
+        }
+
+        .modal-content button.secondary:hover {
+            background: #555;
+        }
+
+        .modal-content .help-text {
+            font-size: 12px;
+            color: #94b8d6;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .modo-edicion {
+            border: 2px dashed #f39c12 !important;
+            background: rgba(243, 156, 18, 0.05) !important;
+        }
+
+        .indicador-edicion {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f39c12;
+            color: #0a1929;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 1500;
+            display: none;
+        }
+
+        .indicador-edicion.active {
+            display: block;
+        }
+
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(13, 27, 42, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #4a90e2;
+            z-index: 3000;
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(74, 144, 226, 0.3);
+            border-top: 4px solid #4a90e2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .titulo-portada {
-                font-size: 32px;
-            }
-            
-            .subtitulo-portada {
-                font-size: 18px;
-            }
-
             nav ul {
                 flex-direction: column;
-                gap: 10px;
+                gap: 5px;
+                align-items: stretch;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a, nav .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .submenu {
+                position: relative;
+                min-width: 100%;
             }
 
             .clasificado {
@@ -321,136 +571,488 @@
             }
 
             .logo-placeholder {
-                width: 250px;
-                height: 250px;
+                width: 180px;
+                height: 180px;
                 font-size: 36px;
+            }
+
+            #principal h1 {
+                font-size: 28px;
+            }
+
+            .contenido {
+                padding: 20px;
+            }
+
+            .archivo-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .archivo-acciones {
+                width: 100%;
+            }
+
+            .btn-descargar, .btn-eliminar {
+                flex: 1;
             }
         }
     </style>
 </head>
 <body>
-    <!-- PORTADA -->
-    <div id="portada">
-        <div class="clasificado">TOP SECRET</div>
-        <div class="container">
+    <div class="clasificado">TOP SECRET</div>
+    <div class="indicador-edicion" id="indicadorEdicion">🔓 MODO EDICIÓN ACTIVADO</div>
+    
+    <!-- Loading overlay -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div style="color: white; text-align: center;">Cargando...</div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="mostrarSeccion('principal')" class="nav-link active">INICIO</a></li>
+            
+            <!-- 1ª EVALUACIÓN CON SUBMENÚ -->
+            <li class="nav-item-with-submenu">
+                <div class="nav-btn" onclick="toggleSubmenu(event, 'submenu1')">1ª Evaluación</div>
+                <div class="submenu" id="submenu1">
+                    <a href="#" onclick="mostrarSeccion('eval1-unidad1')">Protocolo Agente Saludable</a>
+                    <a href="#" onclick="mostrarSeccion('eval1-unidad2')">Activación de las Capacidades AME</a>
+                    <a href="#" onclick="mostrarSeccion('eval1-unidad3')">Entrenamiento Conjunto: Cooperación en Acción</a>
+                    <a href="#" onclick="mostrarSeccion('eval1-unidad4')">Archivo Escalones Invisibles</a>
+                </div>
+            </li>
+            
+            <!-- 2ª EVALUACIÓN CON SUBMENÚ -->
+            <li class="nav-item-with-submenu">
+                <div class="nav-btn" onclick="toggleSubmenu(event, 'submenu2')">2ª Evaluación</div>
+                <div class="submenu" id="submenu2">
+                    <a href="#" onclick="mostrarSeccion('eval2-unidad1')">Activación de las Capacidades II</a>
+                    <a href="#" onclick="mostrarSeccion('eval2-unidad2')">Agente en Terreno: Orientación Estratégica</a>
+                    <a href="#" onclick="mostrarSeccion('eval2-unidad3')">Entrenamiento de Campo: Floorball</a>
+                    <a href="#" onclick="mostrarSeccion('eval2-unidad4')">Patrones Codificados AME: Tutting</a>
+                </div>
+            </li>
+            
+            <!-- 3ª EVALUACIÓN CON SUBMENÚ -->
+            <li class="nav-item-with-submenu">
+                <div class="nav-btn" onclick="toggleSubmenu(event, 'submenu3')">3ª Evaluación</div>
+                <div class="submenu" id="submenu3">
+                    <a href="#" onclick="mostrarSeccion('eval3-unidad1')">Operación Tradición: Juegos Tradicionales</a>
+                    <a href="#" onclick="mostrarSeccion('eval3-unidad2')">Entrenamiento de Campo: Cachibol</a>
+                    <a href="#" onclick="mostrarSeccion('eval3-unidad3')">Coordinación Acrobática AME</a>
+                    <a href="#" onclick="mostrarSeccion('eval3-unidad4')">Agente en Terreno: Voleibol</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+        <!-- PÁGINA PRINCIPAL -->
+        <section id="principal" class="seccion active">
             <div class="logo-container">
-                <!-- Reemplaza este div con tu imagen: <img src="tu-logo.png" alt="Logo AME"> -->
                 <div class="logo-placeholder">
                     AME
                     <div class="subtitle">Agencia de Movimiento<br>y Energía</div>
                 </div>
             </div>
-            <h1 class="titulo-portada">AGENCIA DE MOVIMIENTO Y ENERGÍA</h1>
-            <p class="subtitulo-portada">[ Acceso Restringido - Solo Agentes Autorizados ]</p>
-            <button class="acceso-btn" onclick="accederSistema()">▶ ACCEDER AL SISTEMA</button>
-        </div>
-    </div>
 
-    <!-- NAVEGACIÓN -->
-    <nav id="navegacion" style="display: none;">
-        <ul>
-            <li><a href="#" onclick="mostrarSeccion('mision')" class="nav-link active">MISIÓN</a></li>
-            <li><a href="#" onclick="mostrarSeccion('formacion')" class="nav-link">FORMACIÓN</a></li>
-            <li><a href="#" onclick="mostrarSeccion('normas')" class="nav-link">PROTOCOLO</a></li>
-        </ul>
-    </nav>
+            <h1>AGENCIA DE MOVIMIENTO Y ENERGÍA</h1>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div id="contenido-principal" style="display: none;">
-        <div class="container">
-            <!-- SECCIÓN 1: MISIÓN -->
-            <section id="mision" class="seccion active">
-                <div class="seccion-header">
-                    <h2>BRIEFING DE MISIÓN</h2>
-                    <p class="codigo">[ CÓDIGO: AME-001 | CLASIFICACIÓN: CONFIDENCIAL ]</p>
-                </div>
-                <div class="contenido editable" contenteditable="true">
-                    <p><strong>Agente:</strong></p>
-                    <p>Si estás leyendo esto, no es casualidad. Has sido seleccionado para formar parte de la <strong>Agencia de Movimiento y Energía (AME)</strong>, una organización especial cuyo objetivo es entrenar, preparar y desarrollar a los mejores agentes del movimiento.</p>
-                    
-                    <p>A partir de hoy, tu cuerpo y tu mente serán tus principales herramientas. Aquí aprenderás a moverte con eficacia, trabajar en equipo, superar retos, tomar decisiones adecuadas según la situación y cuidar tu salud, porque un buen agente no solo es fuerte, sino también inteligente, responsable y activo.</p>
-                    
-                    <p>En AME, creemos que la Educación Física va mucho más allá del deporte:</p>
-                    <p><strong>Es ACCIÓN, ESTRATEGIA, TRABAJO EN EQUIPO y SUPERACIÓN PERSONAL</strong></p>
-                    
-                    <p>Cada misión que afrontes te ayudará a descubrir tus capacidades, mejorar tu condición física y entender la importancia del movimiento en tu vida diaria.</p>
-                    <span class="edit-indicator">✎ Click para editar</span>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 2: FORMACIÓN -->
-            <section id="formacion" class="seccion">
-                <div class="seccion-header">
-                    <h2>PROGRAMA DE FORMACIÓN</h2>
-                    <p class="codigo">[ CÓDIGO: AME-002 | CLASIFICACIÓN: CONFIDENCIAL ]</p>
-                </div>
-                <div class="contenido editable" contenteditable="true">
-                    <p>Durante este curso recibirás diferentes <strong>misiones</strong>:</p>
-                    
-                    <ul>
-                        <li><strong>Entrenamientos especiales</strong> diseñados para mejorar tus capacidades físicas</li>
-                        <li><strong>Desafíos cooperativos</strong> que fortalecerán el trabajo en equipo</li>
-                        <li><strong>Pruebas de condición física</strong> para evaluar tu progreso</li>
-                        <li><strong>Situaciones tácticas</strong> que pondrán a prueba tu estrategia</li>
-                        <li><strong>Retos</strong> donde el esfuerzo, el compañerismo y la actitud serán claves para el éxito de la agencia</li>
-                    </ul>
-                    
-                    <h3>Canal de Información Oficial</h3>
-                    <p>Este blog será tu <strong>canal de información oficial</strong>: encontrarás avisos, misiones, informes, recursos y contenidos que te ayudarán a superar tu formación como agente.</p>
-                    
-                    <p style="text-align: center; margin-top: 40px; font-size: 20px;">
-                        <strong>Prepárate. Entrena. Muévete.</strong><br>
-                        La agencia te necesita.
+            <div class="intro" id="contenidoPrincipal">
+                <p><strong>Agente:</strong></p>
+                
+                <p>Si estás leyendo esto, no es casualidad. Has sido seleccionado para formar parte de la <strong>Agencia de Movimiento y Energía (AME)</strong>, una organización especial cuyo objetivo es entrenar, preparar y desarrollar a los mejores agentes del movimiento.</p>
+                
+                <p>A partir de hoy, tu cuerpo y tu mente serán tus principales herramientas. Aquí aprenderás a moverte con eficacia, trabajar en equipo, superar retos, tomar decisiones adecuadas según la situación y cuidar tu salud, porque un buen agente no solo es fuerte, sino también inteligente, responsable y activo.</p>
+                
+                <p>En AME, creemos que la Educación Física va mucho más allá del deporte:</p>
+                
+                <p style="text-align: center; font-size: 22px; margin: 20px 0;">
+                    <strong>Es ACCIÓN, ESTRATEGIA, TRABAJO EN EQUIPO y SUPERACIÓN PERSONAL</strong>
+                </p>
+                
+                <p>Cada misión que afrontes te ayudará a descubrir tus capacidades, mejorar tu condición física y entender la importancia del movimiento en tu vida diaria.</p>
+                
+                <p>Durante este curso recibirás diferentes misiones: entrenamientos especiales, desafíos cooperativos, pruebas de condición física, situaciones tácticas y retos donde el esfuerzo, el compañerismo y la actitud serán claves para el éxito de la agencia.</p>
+                
+                <h3>Normas básicas del agente AME:</h3>
+                <ul>
+                    <li>Participar activamente en todas las misiones.</li>
+                    <li>Respetar a los compañeros/as, al material y al entorno.</li>
+                    <li>Esforzarse por mejorar, sin rendirse ante las dificultades.</li>
+                    <li>Mantener una actitud positiva y cooperativa.</li>
+                </ul>
+                
+                <p>Este blog será tu canal de información oficial: encontrarás avisos, misiones, informes, recursos y contenidos que te ayudarán a superar tu formación como agente.</p>
+                
+                <p style="text-align: center; font-size: 20px; margin-top: 40px;">
+                    <strong>Prepárate. Entrena. Muévete.</strong><br>
+                    La agencia te necesita.
+                </p>
+                
+                <div style="background: rgba(74, 144, 226, 0.2); border-left: 4px solid #4a90e2; padding: 20px; margin-top: 30px; border-radius: 5px;">
+                    <p style="font-size: 22px; text-align: center; margin: 0;">
+                        <strong>Bienvenido a la AME</strong><br>
+                        <span style="font-size: 18px;">Agencia de Movimiento y Energía</span>
                     </p>
-                    <span class="edit-indicator">✎ Click para editar</span>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- SECCIÓN 3: NORMAS -->
-            <section id="normas" class="seccion">
-                <div class="seccion-header">
-                    <h2>PROTOCOLO DEL AGENTE</h2>
-                    <p class="codigo">[ CÓDIGO: AME-003 | CLASIFICACIÓN: OBLIGATORIO ]</p>
+        <!-- 1ª EVALUACIÓN - UNIDAD 1 -->
+        <section id="eval1-unidad1" class="seccion">
+            <div class="seccion-header">
+                <h2>PROTOCOLO AGENTE SALUDABLE</h2>
+                <p class="codigo">[ 1ª EVALUACIÓN | UNIDAD 1 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval1-unidad1">
+                <h3>Descripción de la Unidad</h3>
+                <p>Contenido sobre hábitos saludables, higiene postural y alimentación equilibrada.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval1-unidad1')">📤 Subir Archivo</button>
                 </div>
-                <div class="contenido editable" contenteditable="true">
-                    <h3>Normas básicas del agente AME:</h3>
-                    
-                    <ul>
-                        <li><strong>Participar activamente</strong> en todas las misiones.</li>
-                        <li><strong>Respetar</strong> a los compañeros/as, al material y al entorno.</li>
-                        <li><strong>Esforzarse por mejorar</strong>, sin rendirse ante las dificultades.</li>
-                        <li>Mantener una <strong>actitud positiva y cooperativa</strong>.</li>
-                    </ul>
-                    
-                    <h3>Compromiso del Agente</h3>
-                    <p>Como miembro de la AME, te comprometes a dar lo mejor de ti en cada sesión, a apoyar a tus compañeros y a representar los valores de nuestra agencia con honor y dedicación.</p>
-                    
-                    <div style="background: rgba(0, 255, 0, 0.1); border-left: 4px solid #00ff00; padding: 20px; margin-top: 30px;">
-                        <p style="font-size: 22px; text-align: center; margin: 0;">
-                            <strong>Bienvenido a la AME</strong><br>
-                            <span style="font-size: 18px;">Agencia de Movimiento y Energía</span>
-                        </p>
-                    </div>
-                    <span class="edit-indicator">✎ Click para editar</span>
+                <ul class="lista-archivos" id="archivos-eval1-unidad1">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 1ª EVALUACIÓN - UNIDAD 2 -->
+        <section id="eval1-unidad2" class="seccion">
+            <div class="seccion-header">
+                <h2>ACTIVACIÓN DE LAS CAPACIDADES AME</h2>
+                <p class="codigo">[ 1ª EVALUACIÓN | UNIDAD 2 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval1-unidad2">
+                <h3>Descripción de la Unidad</h3>
+                <p>Desarrollo de capacidades físicas básicas: fuerza, resistencia, velocidad y flexibilidad.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval1-unidad2')">📤 Subir Archivo</button>
                 </div>
-            </section>
+                <ul class="lista-archivos" id="archivos-eval1-unidad2">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 1ª EVALUACIÓN - UNIDAD 3 -->
+        <section id="eval1-unidad3" class="seccion">
+            <div class="seccion-header">
+                <h2>ENTRENAMIENTO CONJUNTO: COOPERACIÓN EN ACCIÓN</h2>
+                <p class="codigo">[ 1ª EVALUACIÓN | UNIDAD 3 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval1-unidad3">
+                <h3>Descripción de la Unidad</h3>
+                <p>Juegos y actividades cooperativas para desarrollar el trabajo en equipo.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval1-unidad3')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval1-unidad3">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 1ª EVALUACIÓN - UNIDAD 4 -->
+        <section id="eval1-unidad4" class="seccion">
+            <div class="seccion-header">
+                <h2>ARCHIVO ESCALONES INVISIBLES</h2>
+                <p class="codigo">[ 1ª EVALUACIÓN | UNIDAD 4 | El enemigo que no se ve ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval1-unidad4">
+                <h3>Descripción de la Unidad</h3>
+                <p>Análisis del sedentarismo y estrategias para una vida activa.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval1-unidad4')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval1-unidad4">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2ª EVALUACIÓN - UNIDAD 1 -->
+        <section id="eval2-unidad1" class="seccion">
+            <div class="seccion-header">
+                <h2>ACTIVACIÓN DE LAS CAPACIDADES II</h2>
+                <p class="codigo">[ 2ª EVALUACIÓN | UNIDAD 1 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval2-unidad1">
+                <h3>Descripción de la Unidad</h3>
+                <p>Profundización en el desarrollo de capacidades físicas avanzadas.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval2-unidad1')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval2-unidad1">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2ª EVALUACIÓN - UNIDAD 2 -->
+        <section id="eval2-unidad2" class="seccion">
+            <div class="seccion-header">
+                <h2>AGENTE EN TERRENO: ORIENTACIÓN ESTRATÉGICA</h2>
+                <p class="codigo">[ 2ª EVALUACIÓN | UNIDAD 2 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval2-unidad2">
+                <h3>Descripción de la Unidad</h3>
+                <p>Técnicas de orientación en el medio natural y uso de mapas.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval2-unidad2')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval2-unidad2">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2ª EVALUACIÓN - UNIDAD 3 -->
+        <section id="eval2-unidad3" class="seccion">
+            <div class="seccion-header">
+                <h2>ENTRENAMIENTO DE CAMPO: FLOORBALL</h2>
+                <p class="codigo">[ 2ª EVALUACIÓN | UNIDAD 3 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval2-unidad3">
+                <h3>Descripción de la Unidad</h3>
+                <p>Fundamentos técnicos y tácticos del floorball.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval2-unidad3')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval2-unidad3">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2ª EVALUACIÓN - UNIDAD 4 -->
+        <section id="eval2-unidad4" class="seccion">
+            <div class="seccion-header">
+                <h2>PATRONES CODIFICADOS AME: TUTTING</h2>
+                <p class="codigo">[ 2ª EVALUACIÓN | UNIDAD 4 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval2-unidad4">
+                <h3>Descripción de la Unidad</h3>
+                <p>Expresión corporal a través del tutting y movimientos geométricos.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval2-unidad4')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval2-unidad4">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3ª EVALUACIÓN - UNIDAD 1 -->
+        <section id="eval3-unidad1" class="seccion">
+            <div class="seccion-header">
+                <h2>OPERACIÓN TRADICIÓN: JUEGOS TRADICIONALES</h2>
+                <p class="codigo">[ 3ª EVALUACIÓN | UNIDAD 1 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval3-unidad1">
+                <h3>Descripción de la Unidad</h3>
+                <p>Recuperación y práctica de juegos tradicionales y populares.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval3-unidad1')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval3-unidad1">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3ª EVALUACIÓN - UNIDAD 2 -->
+        <section id="eval3-unidad2" class="seccion">
+            <div class="seccion-header">
+                <h2>ENTRENAMIENTO DE CAMPO: CACHIBOL</h2>
+                <p class="codigo">[ 3ª EVALUACIÓN | UNIDAD 2 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval3-unidad2">
+                <h3>Descripción de la Unidad</h3>
+                <p>Fundamentos del cachibol: técnica, táctica y reglamento.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval3-unidad2')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval3-unidad2">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3ª EVALUACIÓN - UNIDAD 3 -->
+        <section id="eval3-unidad3" class="seccion">
+            <div class="seccion-header">
+                <h2>COORDINACIÓN ACROBÁTICA AME</h2>
+                <p class="codigo">[ 3ª EVALUACIÓN | UNIDAD 3 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval3-unidad3">
+                <h3>Descripción de la Unidad</h3>
+                <p>Desarrollo de habilidades acrobáticas y control corporal.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval3-unidad3')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval3-unidad3">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3ª EVALUACIÓN - UNIDAD 4 -->
+        <section id="eval3-unidad4" class="seccion">
+            <div class="seccion-header">
+                <h2>AGENTE EN TERRENO: VOLEIBOL</h2>
+                <p class="codigo">[ 3ª EVALUACIÓN | UNIDAD 4 ]</p>
+            </div>
+            <div class="contenido" id="contenido-eval3-unidad4">
+                <h3>Descripción de la Unidad</h3>
+                <p>Técnicas y tácticas del voleibol aplicadas al juego real.</p>
+            </div>
+            <div class="archivos-container">
+                <div class="archivos-header">
+                    <h3>📁 Archivos y Recursos</h3>
+                    <button class="btn-subir" onclick="mostrarModalSubida('eval3-unidad4')">📤 Subir Archivo</button>
+                </div>
+                <ul class="lista-archivos" id="archivos-eval3-unidad4">
+                    <li class="sin-archivos">No hay archivos disponibles</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- BOTÓN DE EDICIÓN -->
+    <button class="btn-editar" id="btnEditar" onclick="iniciarEdicion()">✏️ Editar</button>
+
+    <!-- MODAL DE CONFIGURACIÓN INICIAL -->
+    <div class="modal" id="modalConfig">
+        <div class="modal-content">
+            <h3>🔧 Configuración Inicial</h3>
+            <p>Para poder editar el contenido, necesitas configurar tu acceso a GitHub:</p>
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>1. Tu GitHub Token:</strong>
+            </label>
+            <input type="password" id="inputToken" placeholder="ghp_xxxxxxxxxxxxx" value="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">
+            <p class="help-text">Token con permisos de 'gist'</p>
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>2. ID del Gist:</strong>
+            </label>
+            <input type="text" id="inputGistId" placeholder="abc123def456..." value="a16c30d3dd77d7819e24af44b5f3e925">
+            <p class="help-text">ID de tu Gist secreto (última parte de la URL)</p>
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>3. Tu Contraseña:</strong>
+            </label>
+            <input type="password" id="inputPassword" placeholder="Crea una contraseña segura">
+            <p class="help-text">Esta contraseña se guardará encriptada en tu navegador</p>
+            
+            <div style="margin-top: 20px;">
+                <button onclick="guardarConfiguracion()">💾 Guardar Configuración</button>
+                <button class="secondary" onclick="cerrarModal('modalConfig')">Cancelar</button>
+            </div>
         </div>
     </div>
 
-    <!-- Botón volver arriba -->
-    <div class="scroll-top" onclick="scrollToTop()">▲</div>
+    <!-- MODAL DE LOGIN -->
+    <div class="modal" id="modalLogin">
+        <div class="modal-content">
+            <h3>🔐 Acceso de Administrador</h3>
+            <p>Introduce tu contraseña para editar:</p>
+            <input type="password" id="inputLoginPassword" placeholder="Contraseña">
+            <div style="margin-top: 20px;">
+                <button onclick="verificarPassword()">Acceder</button>
+                <button class="secondary" onclick="cerrarModal('modalLogin')">Cancelar</button>
+            </div>
+            <p class="help-text" style="margin-top: 20px;">
+                <a href="#" onclick="resetearConfiguracion()" style="color: #4a90e2;">¿Olvidaste tu configuración?</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL DE SUBIDA DE ARCHIVOS -->
+    <div class="modal" id="modalSubida">
+        <div class="modal-content">
+            <h3>📤 Subir Archivo</h3>
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>Nombre del archivo:</strong>
+            </label>
+            <input type="text" id="nombreArchivo" placeholder="Ej: Apuntes Unidad 1">
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>Descripción (opcional):</strong>
+            </label>
+            <textarea id="descripcionArchivo" placeholder="Breve descripción del contenido"></textarea>
+            
+            <label style="display: block; text-align: left; margin-top: 20px; color: #4a90e2;">
+                <strong>Selecciona el archivo:</strong>
+            </label>
+            <input type="file" id="inputArchivo">
+            <p class="help-text">Formatos: PDF, DOC, DOCX, PPT, PPTX, MP4, JPG, PNG, ZIP (máx 5MB)</p>
+            
+            <div style="margin-top: 20px;">
+                <button onclick="subirArchivo()">📤 Subir</button>
+                <button class="secondary" onclick="cerrarModal('modalSubida')">Cancelar</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Función para acceder al sistema
-        function accederSistema() {
-            document.getElementById('portada').style.display = 'none';
-            document.getElementById('navegacion').style.display = 'block';
-            document.getElementById('contenido-principal').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
+        // ========== CONFIGURACIÓN ==========
+        let modoEdicion = false;
+        let config = null;
+        let unidadActual = null;
+        let todosLosArchivos = {};
 
-        // Función para mostrar secciones
+        // Cargar configuración al iniciar
+        window.addEventListener('load', function() {
+            cargarConfiguracion();
+            cargarContenidoDesdeGist();
+        });
+
+        // ========== GESTIÓN DE NAVEGACIÓN ==========
+        
         function mostrarSeccion(seccionId) {
+            // Cerrar todos los submenús
+            document.querySelectorAll('.submenu').forEach(s => s.classList.remove('active'));
+            
             // Ocultar todas las secciones
             const secciones = document.querySelectorAll('.seccion');
             secciones.forEach(s => s.classList.remove('active'));
@@ -458,44 +1060,441 @@
             // Mostrar la sección seleccionada
             document.getElementById(seccionId).classList.add('active');
             
-            // Actualizar navegación
+            // Actualizar navegación activa
             const links = document.querySelectorAll('.nav-link');
             links.forEach(l => l.classList.remove('active'));
-            event.target.classList.add('active');
+            if (seccionId === 'principal') {
+                document.querySelector('.nav-link').classList.add('active');
+            }
             
-            // Scroll suave al inicio
+            // Scroll al inicio
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Mostrar botón scroll to top
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.querySelector('.scroll-top');
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
+        function toggleSubmenu(event, submenuId) {
+            event.stopPropagation();
+            const submenu = document.getElementById(submenuId);
+            
+            // Cerrar otros submenús
+            document.querySelectorAll('.submenu').forEach(s => {
+                if (s.id !== submenuId) s.classList.remove('active');
+            });
+            
+            // Toggle del submenú actual
+            submenu.classList.toggle('active');
+        }
+
+        // Cerrar submenús al hacer click fuera
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.submenu').forEach(s => s.classList.remove('active'));
+        });
+
+        // Permitir Enter en inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('inputLoginPassword');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') verificarPassword();
+                });
             }
         });
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Efecto de escritura en portada
-        const titulo = document.querySelector('.titulo-portada');
-        const textoOriginal = titulo.textContent;
-        titulo.textContent = '';
-        let i = 0;
+        // ========== GESTIÓN DE CONFIGURACIÓN ==========
         
-        function escribir() {
-            if (i < textoOriginal.length) {
-                titulo.textContent += textoOriginal.charAt(i);
-                i++;
-                setTimeout(escribir, 100);
+        function cargarConfiguracion() {
+            const saved = localStorage.getItem('ame_config');
+            if (saved) {
+                try {
+                    config = JSON.parse(saved);
+                } catch (e) {
+                    console.error('Error cargando configuración');
+                    config = null;
+                }
             }
         }
-        
-        escribir();
+
+        function guardarConfiguracion() {
+            const token = document.getElementById('inputToken').value.trim();
+            const gistId = document.getElementById('inputGistId').value.trim();
+            const password = document.getElementById('inputPassword').value;
+
+            if (!token || !gistId || !password) {
+                alert('⚠️ Por favor, rellena todos los campos');
+                return;
+            }
+
+            const hashedPassword = btoa(password + 'AME_SALT');
+
+            config = {
+                token: token,
+                gistId: gistId,
+                passwordHash: hashedPassword
+            };
+
+            localStorage.setItem('ame_config', JSON.stringify(config));
+            
+            cerrarModal('modalConfig');
+            alert('✅ Configuración guardada correctamente.');
+        }
+
+        function resetearConfiguracion() {
+            if (confirm('¿Seguro que quieres resetear la configuración?')) {
+                localStorage.removeItem('ame_config');
+                config = null;
+                cerrarModal('modalLogin');
+                alert('🔄 Configuración reseteada.');
+            }
+        }
+
+        // ========== GESTIÓN DE EDICIÓN ==========
+
+        function iniciarEdicion() {
+            if (!config) {
+                document.getElementById('modalConfig').classList.add('active');
+                return;
+            }
+
+            if (modoEdicion) {
+                guardarCambios();
+            } else {
+                document.getElementById('modalLogin').classList.add('active');
+                document.getElementById('inputLoginPassword').value = '';
+                document.getElementById('inputLoginPassword').focus();
+            }
+        }
+
+        function verificarPassword() {
+            const password = document.getElementById('inputLoginPassword').value;
+            const hashedPassword = btoa(password + 'AME_SALT');
+
+            if (hashedPassword === config.passwordHash) {
+                activarEdicion();
+                cerrarModal('modalLogin');
+            } else {
+                alert('❌ Contraseña incorrecta');
+                document.getElementById('inputLoginPassword').value = '';
+            }
+        }
+
+        function activarEdicion() {
+            modoEdicion = true;
+            
+            // Hacer editables todos los contenidos
+            const contenidos = document.querySelectorAll('[id^="contenido-"]');
+            contenidos.forEach(c => {
+                c.contentEditable = true;
+                c.classList.add('modo-edicion');
+            });
+            
+            document.getElementById('contenidoPrincipal').contentEditable = true;
+            document.getElementById('contenidoPrincipal').classList.add('modo-edicion');
+            
+            document.getElementById('indicadorEdicion').classList.add('active');
+            document.getElementById('btnEditar').innerHTML = '💾 Guardar Cambios';
+            
+            // Actualizar botones de archivos
+            actualizarTodasLasListasArchivos();
+        }
+
+        function desactivarEdicion() {
+            modoEdicion = false;
+            
+            const contenidos = document.querySelectorAll('[id^="contenido-"]');
+            contenidos.forEach(c => {
+                c.contentEditable = false;
+                c.classList.remove('modo-edicion');
+            });
+            
+            document.getElementById('contenidoPrincipal').contentEditable = false;
+            document.getElementById('contenidoPrincipal').classList.remove('modo-edicion');
+            
+            document.getElementById('indicadorEdicion').classList.remove('active');
+            document.getElementById('btnEditar').innerHTML = '✏️ Editar';
+            
+            // Actualizar botones de archivos
+            actualizarTodasLasListasArchivos();
+        }
+
+        // ========== GESTIÓN DE GIST ==========
+
+        async function cargarContenidoDesdeGist() {
+            if (!config) return;
+
+            mostrarLoading(true);
+
+            try {
+                const response = await fetch(`https://api.github.com/gists/${config.gistId}`, {
+                    headers: {
+                        'Authorization': `token ${config.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) throw new Error('Error cargando contenido');
+
+                const data = await response.json();
+                const contenido = JSON.parse(data.files['ame-contenido.json'].content);
+
+                // Cargar contenido principal
+                if (contenido.principal) {
+                    document.getElementById('contenidoPrincipal').innerHTML = contenido.principal;
+                }
+
+                // Cargar contenidos de unidades
+                Object.keys(contenido).forEach(key => {
+                    if (key.startsWith('contenido-')) {
+                        const elemento = document.getElementById(key);
+                        if (elemento && contenido[key]) {
+                            elemento.innerHTML = contenido[key];
+                        }
+                    }
+                });
+
+                // Cargar archivos
+                if (contenido.archivos) {
+                    todosLosArchivos = contenido.archivos;
+                    actualizarTodasLasListasArchivos();
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                mostrarLoading(false);
+            }
+        }
+
+        async function guardarCambios() {
+            if (!config) {
+                alert('⚠️ Necesitas configurar el acceso primero');
+                return;
+            }
+
+            mostrarLoading(true);
+            document.getElementById('btnEditar').disabled = true;
+
+            const contenidos = {
+                principal: document.getElementById('contenidoPrincipal').innerHTML,
+                archivos: todosLosArchivos
+            };
+
+            // Guardar todos los contenidos de unidades
+            const todosContenidos = document.querySelectorAll('[id^="contenido-"]');
+            todosContenidos.forEach(c => {
+                contenidos[c.id] = c.innerHTML;
+            });
+
+            try {
+                const response = await fetch(`https://api.github.com/gists/${config.gistId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Authorization': `token ${config.token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        files: {
+                            'ame-contenido.json': {
+                                content: JSON.stringify(contenidos, null, 2)
+                            }
+                        }
+                    })
+                });
+
+                if (!response.ok) throw new Error('Error guardando contenido');
+
+                desactivarEdicion();
+                alert('✅ Cambios guardados correctamente');
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error al guardar. Verifica tu configuración.');
+            } finally {
+                mostrarLoading(false);
+                document.getElementById('btnEditar').disabled = false;
+            }
+        }
+
+        // ========== GESTIÓN DE ARCHIVOS ==========
+
+        function mostrarModalSubida(unidad) {
+            if (!config) {
+                alert('⚠️ Necesitas configurar el acceso primero');
+                document.getElementById('modalConfig').classList.add('active');
+                return;
+            }
+            
+            if (!modoEdicion) {
+                alert('⚠️ Debes activar el modo edición primero');
+                return;
+            }
+
+            unidadActual = unidad;
+            document.getElementById('nombreArchivo').value = '';
+            document.getElementById('descripcionArchivo').value = '';
+            document.getElementById('inputArchivo').value = '';
+            document.getElementById('modalSubida').classList.add('active');
+        }
+
+        async function subirArchivo() {
+            const nombre = document.getElementById('nombreArchivo').value.trim();
+            const descripcion = document.getElementById('descripcionArchivo').value.trim();
+            const fileInput = document.getElementById('inputArchivo');
+            const file = fileInput.files[0];
+
+            if (!nombre || !file) {
+                alert('⚠️ Debes poner un nombre y seleccionar un archivo');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert('⚠️ El archivo no puede superar 5MB');
+                return;
+            }
+
+            mostrarLoading(true);
+            cerrarModal('modalSubida');
+
+            try {
+                // Convertir archivo a base64
+                const base64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+
+                const archivo = {
+                    id: Date.now().toString(),
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    nombreArchivo: file.name,
+                    tipo: file.type,
+                    tamano: file.size,
+                    data: base64,
+                    fecha: new Date().toISOString()
+                };
+
+                // Añadir a la lista de archivos
+                if (!todosLosArchivos[unidadActual]) {
+                    todosLosArchivos[unidadActual] = [];
+                }
+                todosLosArchivos[unidadActual].push(archivo);
+
+                // Guardar en Gist
+                await guardarCambios();
+                
+                actualizarListaArchivos(unidadActual);
+                alert('✅ Archivo subido correctamente');
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error al subir el archivo');
+            } finally {
+                mostrarLoading(false);
+            }
+        }
+
+        function actualizarTodasLasListasArchivos() {
+            // Actualizar todas las listas de archivos
+            const unidades = [
+                'eval1-unidad1', 'eval1-unidad2', 'eval1-unidad3', 'eval1-unidad4',
+                'eval2-unidad1', 'eval2-unidad2', 'eval2-unidad3', 'eval2-unidad4',
+                'eval3-unidad1', 'eval3-unidad2', 'eval3-unidad3', 'eval3-unidad4'
+            ];
+            
+            unidades.forEach(unidad => {
+                actualizarListaArchivos(unidad);
+            });
+        }
+
+        function actualizarListaArchivos(unidad) {
+            const lista = document.getElementById(`archivos-${unidad}`);
+            if (!lista) return;
+
+            const archivos = todosLosArchivos[unidad] || [];
+
+            if (archivos.length === 0) {
+                lista.innerHTML = '<li class="sin-archivos">No hay archivos disponibles</li>';
+                return;
+            }
+
+            lista.innerHTML = archivos.map(archivo => `
+                <li class="archivo-item">
+                    <div class="archivo-info">
+                        <div class="archivo-nombre">📄 ${archivo.nombre}</div>
+                        <div class="archivo-descripcion">
+                            ${archivo.descripcion || 'Sin descripción'} 
+                            <br><small>${archivo.nombreArchivo} (${formatBytes(archivo.tamano)})</small>
+                        </div>
+                    </div>
+                    <div class="archivo-acciones">
+                        <button class="btn-descargar" onclick="descargarArchivo('${unidad}', '${archivo.id}')">
+                            📥 Descargar
+                        </button>
+                        ${modoEdicion ? `<button class="btn-eliminar" onclick="eliminarArchivo('${unidad}', '${archivo.id}')">🗑️</button>` : ''}
+                    </div>
+                </li>
+            `).join('');
+        }
+
+        function descargarArchivo(unidad, archivoId) {
+            const archivos = todosLosArchivos[unidad] || [];
+            const archivo = archivos.find(a => a.id === archivoId);
+            
+            if (!archivo) {
+                alert('❌ Archivo no encontrado');
+                return;
+            }
+
+            // Convertir base64 a blob y descargar
+            const byteCharacters = atob(archivo.data);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: archivo.tipo });
+
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = archivo.nombreArchivo;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        async function eliminarArchivo(unidad, archivoId) {
+            if (!confirm('¿Estás seguro de eliminar este archivo?')) return;
+
+            todosLosArchivos[unidad] = todosLosArchivos[unidad].filter(a => a.id !== archivoId);
+            
+            await guardarCambios();
+            actualizarListaArchivos(unidad);
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // ========== UTILIDADES ==========
+
+        function cerrarModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function mostrarLoading(mostrar) {
+            if (mostrar) {
+                document.getElementById('loading').classList.add('active');
+            } else {
+                document.getElementById('loading').classList.remove('active');
+            }
+        }
     </script>
 </body>
 </html>
